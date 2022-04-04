@@ -1,19 +1,34 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+  <div id="app-layout">
+    <header class="header">
+      <div>
+        <img src="../assets/logo.svg">
+      </div>
+      <div>My shirt shop</div>
+    </header>
+    <nav-menu />
     <router-view/>
   </div>
 </template>
 
+<script>
+import NavMenu from "@/components/NavMenu";
+export default {
+  components: {
+    'nav-menu': NavMenu
+  }
+}
+</script>
+
 <style lang="stylus">
-#app
-  font-family Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
+@import "../style/main.styl"
+</style>
+
+<style lang="stylus" scoped>
+.header {
+  .img {
+    width: 64px;
+    height: 64px;
+  }
+}
 </style>
