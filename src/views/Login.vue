@@ -66,6 +66,9 @@
 </template>
 
 <script>
+import SmartForm from "@/components/SmartForm"
+import FormInput from "@/components/FormInput"
+
 export default {
   name: "Login",
   data () {
@@ -103,10 +106,10 @@ export default {
         method: 'POST',
         body: JSON.stringify({
           username: this.username,
-          password: this.password,
+          password: this.password
         })
       })
-      this.$router.push({name:'home'})
+      this.$router.push(this.$route.params.wantedRouted||{name: 'home'})
     },
     async signup() {
       await this.$fetch('signup',{
@@ -119,6 +122,10 @@ export default {
       })
       this.mode = "login"
     }
+  },
+  template:{
+    SmartForm,
+    FormInput
   }
 }
 </script>

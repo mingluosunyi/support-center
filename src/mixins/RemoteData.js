@@ -18,7 +18,6 @@ export default function (resources) {
         try{
           this.$data[key] = await this.$fetch(url)
         }catch (e) {
-          console.log(e)
           this.$data.remoteErrors[key] = e
         }
         this.$data.remoteDataLoading--
@@ -37,7 +36,15 @@ export default function (resources) {
     created () {
       for (const key in resources) {
         let url = resources[key]
-        this.fetchResource(key,url)
+        if(typeof url === 'function'){
+          this.$watch(url, (val) => {
+            this.fetchResource(key, val)
+          },{
+            immediate:true
+          })
+        }else {
+          this.fetchResource(key,url)
+        }
       }
     }
   }
