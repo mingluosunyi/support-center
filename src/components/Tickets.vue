@@ -13,8 +13,6 @@
       <span class="date">{{ ticket.date | date }}</span>
     </div>
   </section>
-
-  <Ticket v-if="id" :id="id"/>
 </div>
 </template>
 

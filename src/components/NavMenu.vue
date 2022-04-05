@@ -24,6 +24,7 @@ export default {
       const result = await this.$fetch('logout')
       if (result.status === 'ok'){
         this.$state.user = null
+        this.$router.push({name: 'home'})
       }
     }
   }
